@@ -54,7 +54,7 @@ similarity = cosine_similarity(cv_fit )
 high_ratings = input("Enter highest Rated Movies:")
 
 ## Step 6: Get index of this movie from its title
-rating_index = get_rating_from_index(high_ratings, data)
+rating_index = get_rating_from_index(high_ratings)
 try:
     movie_index = int(rating_index)
     similar_movies = list(similarity[movie_index])
