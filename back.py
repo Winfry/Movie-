@@ -37,7 +37,8 @@ data['combined_features'] = data.apply(combine_feature, axis=1)
 #print(df['combined_features'].head())
 ##Step 4: Create count matrix from this new combined column
 cv = CountVectorizer()
-cv_fit=cv.fit_transform(data['combined_features'])
+cv_fit=cv.fit_transform(data['combined_features'].astype(str))
+
 movie_similarity = cosine_similarity(cv.fit)
 if not user_movie_matrix.empty:
     movie_similarity = cosine_similarity(user_movie_matrix.T)
