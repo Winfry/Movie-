@@ -54,7 +54,7 @@ def get_movie_from_index(data, index):
         return None  # Or return a default value or raise an exception, depending on your requirements
 
 # Example usage:
-index = 123  # Replace with your actual index value
+index = 3 
 movie = get_movie_from_index(data, index)
 if movie is not None:
     print(f"Movie for index {index}: {movie}")
