@@ -45,6 +45,21 @@ data['combined_features'] = data.apply(combine_feature, axis=1)
 cv = CountVectorizer()
 cv_fit=cv.fit_transform(data['combined_features'])
 
+def get_movie_from_index(data, index):
+    filtered_data = data[data.index == index]
+    if not filtered_data.empty:
+        return filtered_data["Movie"].values[0]
+    else:
+        # Handle the case where there are no elements with the specified index
+        return None  # Or return a default value or raise an exception, depending on your requirements
+
+# Example usage:
+index = 123  # Replace with your actual index value
+movie = get_movie_from_index(data, index)
+if movie is not None:
+    print(f"Movie for index {index}: {movie}")
+else:
+    print(f"No movie found for index {index}")
 
 
 
