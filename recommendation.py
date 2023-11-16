@@ -61,12 +61,16 @@ if movie is not None:
 else:
     print(f"No movie found for index {index}")
 
-
-
-
 ##Step 5: Compute the Cosine Similarity based on the count_matrix
 similarity = cosine_similarity(cv_fit )
 high_ratings = input("Enter highest Rated Movies:")
+ # Logic on User Ratings
+if not user:
+    similarity = cosine_similarity(high_ratings.T)
+    
+else:
+    print("Not enough ratings to calculate similarity.")
+
 
 ## Step 6: Get index of this movie from its title
 rating_index = get_rating_from_index(high_ratings)
