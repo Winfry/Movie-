@@ -55,7 +55,7 @@ def get_rating_from_index(data, index):
         return None  # Or return a default value or raise an exception, depending on your requirements
 
 # Example usage:
-index = data
+index = list(data)
 rating = get_rating_from_index(data, index)
 if rating is not None:
     print(f"Rating for index {index}: {rating}")
