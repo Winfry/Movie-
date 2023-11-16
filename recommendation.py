@@ -10,7 +10,7 @@ def get_index_from_title(Movie):
 	return data[data.Movie == Movie]["Movie"].values[0]
 
 def get_rating_from_index(index):
-	return data[data.index == index]["Rating"].values[0]
+	return data[data.index == index]["Movie"].values[0]
 
 def get_index_from_title(Rating):
 	return data[data.Rating== Rating]["index"].values[0]
