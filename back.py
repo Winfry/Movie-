@@ -1,5 +1,7 @@
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import CountVectorizer
+
 
 # Load your dataset (replace 'your_data.csv' with your actual file)
 """
@@ -21,7 +23,22 @@ user_movie_matrix = user_movie_matrix[valid_movies]
 
 
 # Calculate cosine similarity between movies
-movie_similarity = cosine_similarity(user_movie_matrix.T)
+features = ['Rating', 'Movie', 'User']
+for feature in features:
+	data[feature] = data[feature].fillna('')
+
+def combine_feature(row):
+	try:
+		return row['Rating'] +' '+ row["User"] + " " + row['Movie'] 
+	except:
+		print('Error : \n', row)
+data['combined_features'] = data.apply(combine_feature, axis=1)
+
+#print(df['combined_features'].head())
+##Step 4: Create count matrix from this new combined column
+cv = CountVectorizer()
+cv_fit=cv.fit_transform(data['combined_features'])
+movie_similarity = cosine_similarity(cv.fit)
 if not user_movie_matrix.empty:
     movie_similarity = cosine_similarity(user_movie_matrix.T)
     # Continue with your recommendation logic
