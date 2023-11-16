@@ -14,8 +14,19 @@ data.to_csv('data.csv', index=None )
 # Pivot the data to create a user-movie matrix
 user_movie_matrix = data.pivot_table(index='User', columns='Movie', values='Rating', fill_value=0)
 
+# Check if there are enough ratings for each movie
+min_ratings = 10  # Adjust this value as needed
+valid_movies = user_movie_matrix.columns[user_movie_matrix.sum(axis=0) >= min_ratings]
+user_movie_matrix = user_movie_matrix[valid_movies]
+
+
 # Calculate cosine similarity between movies
 movie_similarity = cosine_similarity(user_movie_matrix.T)
+if not user_movie_matrix.empty:
+    movie_similarity = cosine_similarity(user_movie_matrix.T)
+    # Continue with your recommendation logic
+else:
+    print("Not enough ratings to calculate similarity.")
 
 # Function to get movie recommendations for a given movie
 def get_movie_recommendations(movie_name, similarity_matrix, user_movie_matrix):
