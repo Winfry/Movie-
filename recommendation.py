@@ -12,8 +12,8 @@ def get_index_from_title(Movie):
 def get_rating_from_index(index):
 	return data[data.index == index]["Rating"].values[0]
 
-def get_rating_from_user(Rating):
-	return data[data.Rating == Rating]["index"].values[0]
+def get_index_from_title(Rating):
+	return data[data.Rating== Rating]["index"].values[0]
 
 ##################################################
 
@@ -44,6 +44,24 @@ data['combined_features'] = data.apply(combine_feature, axis=1)
 ##Step 4: Create count matrix from this new combined column
 cv = CountVectorizer()
 cv_fit=cv.fit_transform(data['combined_features'])
+
+
+def get_rating_from_index(data, index):
+    filtered_data = data[data.index == index]
+    if not filtered_data.empty:
+        return filtered_data["Rating"].values[0]
+    else:
+        # Handle the case where there are no elements with the specified index
+        return None  # Or return a default value or raise an exception, depending on your requirements
+
+# Example usage:
+index = 123  # Replace with your actual index value
+rating = get_rating_from_index(data, index)
+if rating is not None:
+    print(f"Rating for index {index}: {rating}")
+else:
+    print(f"No rating found for index {index}")
+
 
 ##Step 5: Compute the Cosine Similarity based on the count_matrix
 similarity = cosine_similarity(cv_fit )
