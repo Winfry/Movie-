@@ -13,7 +13,7 @@ def get_rating_from_index(index):
 	return data[data.index == index]["Rating"].values[0]
 
 def get_rating_from_user(Rating):
-	return data[data.Rating == Rating]["Rating"].values[0]
+	return data[data.Rating == Rating]["index"].values[0]
 
 ##################################################
 
@@ -47,10 +47,10 @@ cv_fit=cv.fit_transform(data['combined_features'])
 
 ##Step 5: Compute the Cosine Similarity based on the count_matrix
 similarity = cosine_similarity(cv_fit )
-movie_user_likes = input("Enter highest Rated Movies:")
+high_ratings = input("Enter highest Rated Movies:")
 
 ## Step 6: Get index of this movie from its title
-rating_index = get_rating_from_index(index)
+rating_index = get_rating_from_index(high_ratings)
 try:
     movie_index = int(rating_index)
     similar_movies = list(similarity[movie_index])
