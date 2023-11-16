@@ -8,6 +8,16 @@ def get_title_from_index(index):
 
 def get_index_from_title(Movie):
 	return data[data.Movie == Movie]["Movie"].values[0]
+
+def get_rating_from_index(index):
+	return data[data.index == index]["Rating"].values[0]
+
+def get_index_from_title(Rating):
+	return data[data.Rating == Rating]["Rating"].values[0]
+
+
+
+
 ##################################################
 
 ##Step 1: Read CSV File
