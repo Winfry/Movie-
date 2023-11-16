@@ -12,11 +12,8 @@ def get_index_from_title(Movie):
 def get_rating_from_index(index):
 	return data[data.index == index]["Rating"].values[0]
 
-def get_index_from_title(Rating):
+def get_rating_from_user(Rating):
 	return data[data.Rating == Rating]["Rating"].values[0]
-
-
-
 
 ##################################################
 
