@@ -41,8 +41,8 @@ cv_fit=cv.fit_transform(data['combined_features'].astype(str))
 
 movie_similarity = cosine_similarity(cv.fit)
 if not user_movie_matrix.empty:
-    movie_similarity = cosine_similarity(user_movie_matrix.T)
-    # Continue with your recommendation logic
+    movie_similarity_user_ratings = cosine_similarity(user_movie_matrix.T)
+    # Logic on User Ratings
 else:
     print("Not enough ratings to calculate similarity.")
 
