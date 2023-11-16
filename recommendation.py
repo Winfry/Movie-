@@ -46,21 +46,7 @@ cv = CountVectorizer()
 cv_fit=cv.fit_transform(data['combined_features'])
 
 
-def get_rating_from_index(data, index):
-    filtered_data = data[data.index == index]
-    if not filtered_data.empty:
-        return filtered_data["Rating"].values[0]
-    else:
-        # Handle the case where there are no elements with the specified index
-        return None  # Or return a default value or raise an exception, depending on your requirements
 
-# Example usage:
-index = list(data)
-rating = get_rating_from_index(data, index)
-if rating is not None:
-    print(f"Rating for index {index}: {rating}")
-else:
-    print(f"No rating found for index {index}")
 
 
 ##Step 5: Compute the Cosine Similarity based on the count_matrix
