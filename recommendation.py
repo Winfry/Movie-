@@ -39,13 +39,15 @@ def combine_feature(row):
 	except:
 		print('Error : \n', row)
 data['combined_features'] = data.apply(combine_feature, axis=1)
+
 #print(df['combined_features'].head())
 ##Step 4: Create count matrix from this new combined column
 cv = CountVectorizer()
 cv_fit=cv.fit_transform(data['combined_features'])
+
 ##Step 5: Compute the Cosine Similarity based on the count_matrix
 similarity = cosine_similarity(cv_fit )
-movie_user_likes = input("Enter your loved movie:")
+movie_user_likes = input("Enter highest Rated Movies:")
 
 ## Step 6: Get index of this movie from its title
 movie_index = get_index_from_title(movie_user_likes)
