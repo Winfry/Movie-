@@ -2,8 +2,14 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Load your dataset (replace 'your_data.csv' with your actual file)
-your_data_file = 'your_data.csv'
-data = pd.read_csv(your_data_file)
+"""
+    read csv file
+    :param path:file path
+    :return:csv data as DataFrame
+    """
+data = pd.read_csv("data(1).txt")
+data.to_csv('data.csv', index=None )
+   
 
 # Pivot the data to create a user-movie matrix
 user_movie_matrix = data.pivot_table(index='User', columns='Movie', values='Rating', fill_value=0)
